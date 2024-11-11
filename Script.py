@@ -115,8 +115,7 @@ User - {}"""
 ⭐ Rating: {rating} / 10</b>
 """
 
-    FILE_CAPTION = """<b>{file_name}\n\n𝖩𝗈𝗂𝗇➥ 「<a href="https://t.me/MN_MOVIES2">MAIN CHANNEL</a>」<br>
-    𝖩𝗈𝗂𝗇➥ 「<a href="https://t.me/MN_MOVIES2">MAIN CHANNEL</a>」</b>"""
+    FILE_CAPTION = """<b>{file_name}\n\n𝖩𝗈𝗂𝗇➥ 「<a href="https://t.me/MN_MOVIES2">MAIN CHANNEL</a>」<br>𝖩𝗈𝗂𝗇➥ 「<a href="https://t.me/MN_MOVIES2">MAIN CHANNEL</a>」</b>"""
     
 
     ALRT_TXT = """enthaa mwone!"""
