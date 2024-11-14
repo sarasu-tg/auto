@@ -76,22 +76,20 @@ async def send_movie_updates(bot, file_name, caption, file_id):
             return 
         processed_movies.add(movie_name)    
         poster_url = await get_imdb(movie_name)
-        caption_message = f"#New_File_Added ✅\n\nFile_Name:- <code>{movie_name}</code>\n\nLanguage:- {language}\n\nQuality:- {quality}" 
+        caption_message = f"#New_File_Added ✅\n\n🎬Tɪᴛʟᴇ:- {movie_name}\n\n🔊 Aᴜᴅɪᴏ:- {language}\n\n💿 Qᴜᴀʟɪᴛʏ:- {quality}\n\n📤 Uᴘʟᴏᴀᴅ : @mntgx " 
         search_movie = movie_name.replace(" ", '-')
         movie_update_channel = await db.movies_update_channel_id()    
         btn = [[
-            InlineKeyboardButton('📂 ɢᴇᴛ ғɪʟᴇ 📂', url=f'https://telegram.me/{temp.U_NAME}?start=getfile-{search_movie}')
+            InlineKeyboardButton('📂 Cʟɪᴄᴋ Hᴇʀᴇ Tᴏ Sᴇᴀʀᴄʜ 📂', url=f'https://telegram.me/{temp.U_NAME}?start=getfile-{search_movie}')
         ]]
         reply_markup = InlineKeyboardMarkup(btn)
         if poster_url:
-            await bot.send_photo(movie_update_channel if movie_update_channel else MOVIE_UPDATE_CHANNEL, 
-                                 photo=poster_url, caption=caption_message, reply_markup=reply_markup)
+            await bot.send_message(movie_update_channel if movie_update_channel else MOVIE_UPDATE_CHANNEL, 
+                                 text=caption_message, reply_markup=reply_markup)
         else:
             no_poster = "https://telegra.ph/file/88d845b4f8a024a71465d.jpg"
-            await bot.send_photo(movie_update_channel if movie_update_channel else MOVIE_UPDATE_CHANNEL, 
-                                 photo=no_poster, caption=caption_message, reply_markup=reply_markup)  
+            await bot.send_message(movie_update_channel if movie_update_channel else MOVIE_UPDATE_CHANNEL, 
+                                 text=caption_message, reply_markup=reply_markup)  
     except Exception as e:
         print('Failed to send movie update. Error - ', e)
         await bot.send_message(LOG_CHANNEL, f'Failed to send movie update. Error - {e}')
-    
-  
