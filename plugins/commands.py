@@ -184,12 +184,9 @@ async def start(client:Client, message):
                         buttons = [[
                             InlineKeyboardButton('☆ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ☆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
                         ],[
-                            InlineKeyboardButton("Hᴇʟᴘ ⚙️", callback_data='features'),
-                            InlineKeyboardButton('Aʙᴏᴜᴛ 💌', callback_data=f'about')
-                        ],[
-                            InlineKeyboardButton('Mᴏsᴛ Sᴇᴀʀᴄʜ 🔍', callback_data="mostsearch"),
-                            InlineKeyboardButton('Tᴏᴘ Tʀᴇɴᴅɪɴɢ ⚡', callback_data="trending")
-                        ]] 
+             InlineKeyboardButton(f' ​🇳​​🇪​​🇼​ ​🇴​​🇹​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​', url='https://t.me/new_ott_movies3'),
+             InlineKeyboardButton(f'🇲​​🇦​​🇮​​🇳​ ​🇨​​🇭​​🇦​​🇳​​🇳​​🇪​​🇱​', url='https://t.me/mn_movies3')
+                            ]] 
                         reply_markup = InlineKeyboardMarkup(buttons)
                         m=await message.reply_sticker("CAACAgUAAxkBAAED0UZnMYC4VhUBV7CzHvO85dzzTYEiXgACVxIAAjrGWFeHVlEzCKOCkB4E") 
                         await asyncio.sleep(1)
@@ -210,12 +207,9 @@ async def start(client:Client, message):
         buttons = [[
                             InlineKeyboardButton('☆ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ☆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
                         ],[
-                            InlineKeyboardButton("Hᴇʟᴘ ⚙️", callback_data='features'),
-                            InlineKeyboardButton('Aʙᴏᴜᴛ 💌', callback_data=f'about')
-                        ],[
-                            InlineKeyboardButton('Mᴏsᴛ Sᴇᴀʀᴄʜ 🔍', callback_data="mostsearch"),
-                            InlineKeyboardButton('Tᴏᴘ Tʀᴇɴᴅɪɴɢ ⚡', callback_data="trending")
-                        ]] 
+             InlineKeyboardButton(f' ​🇳​​🇪​​🇼​ ​🇴​​🇹​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​', url='https://t.me/new_ott_movies3'),
+             InlineKeyboardButton(f'🇲​​🇦​​🇮​​🇳​ ​🇨​​🇭​​🇦​​🇳​​🇳​​🇪​​🇱​', url='https://t.me/mn_movies3')
+            ]] 
         reply_markup = InlineKeyboardMarkup(buttons)
         m=await message.reply_sticker("CAACAgUAAxkBAAED0UZnMYC4VhUBV7CzHvO85dzzTYEiXgACVxIAAjrGWFeHVlEzCKOCkB4E") 
         await asyncio.sleep(1)
@@ -269,12 +263,9 @@ async def start(client:Client, message):
         buttons = [[
             InlineKeyboardButton('☆ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ☆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
                         ],[
-                            InlineKeyboardButton("Hᴇʟᴘ ⚙️", callback_data='features'),
-                            InlineKeyboardButton('Aʙᴏᴜᴛ 💌', callback_data=f'about')
-                        ],[
-                            InlineKeyboardButton('Mᴏsᴛ Sᴇᴀʀᴄʜ 🔍', callback_data="mostsearch"),
-                            InlineKeyboardButton('Tᴏᴘ Tʀᴇɴᴅɪɴɢ ⚡', callback_data="trending")
-                        ]] 
+             InlineKeyboardButton(f' ​🇳​​🇪​​🇼​ ​🇴​​🇹​​🇹​ ​🇺​​🇵​​🇩​​🇦​​🇹​​🇪​​🇸​', url='https://t.me/new_ott_movies3'),
+             InlineKeyboardButton(f'🇲​​🇦​​🇮​​🇳​ ​🇨​​🇭​​🇦​​🇳​​🇳​​🇪​​🇱​', url='https://t.me/mn_movies3')
+            ]] 
         reply_markup = InlineKeyboardMarkup(buttons)
         return await message.reply_photo(photo=START_IMG, caption=script.START_TXT.format(message.from_user.mention, get_status(), message.from_user.id),
             reply_markup=reply_markup,
