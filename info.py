@@ -43,18 +43,18 @@ SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'https://t.me/+n03Llrw0db1iZWY1') #Su
 #---------------------------------------------------------------
 IS_VERIFY = is_enabled('IS_VERIFY', False)
 #---------------------------------------------------------------
-TUTORIAL = environ.get("TUTORIAL", "https://t.me/")
-TUTORIAL_2 = environ.get("TUTORIAL_2", "https://t.me/")
-TUTORIAL_3 = environ.get("TUTORIAL_3", "https://t.me/")
+TUTORIAL = environ.get("TUTORIAL", "https://t.me/mntgxo/14")
+TUTORIAL_2 = environ.get("TUTORIAL_2", "https://t.me/mntgxo/14")
+TUTORIAL_3 = environ.get("TUTORIAL_3", "https://t.me/mntgxo/14")
 VERIFY_IMG = environ.get("VERIFY_IMG", "https://graph.org/file/1669ab9af68eaa62c3ca4.jpg")
-SHORTENER_API = environ.get("SHORTENER_API", "3097623f852197a9ce40d1212aaa8bbf2803e799")
-SHORTENER_WEBSITE = environ.get("SHORTENER_WEBSITE", 'omegalinks.in')
-SHORTENER_API2 = environ.get("SHORTENER_API2", "3097623f852197a9ce40d1212aaa8bbf2803e799")
-SHORTENER_WEBSITE2 = environ.get("SHORTENER_WEBSITE2", 'omegalinks.in')
-SHORTENER_API3 = environ.get("SHORTENER_API3", "3097623f852197a9ce40d1212aaa8bbf2803e799")
-SHORTENER_WEBSITE3 = environ.get("SHORTENER_WEBSITE3", 'omegalinks.in')
-TWO_VERIFY_GAP = int(environ.get('TWO_VERIFY_GAP', "14400"))
-THREE_VERIFY_GAP = int(environ.get('THREE_VERIFY_GAP', "14400"))
+SHORTENER_API = environ.get("SHORTENER_API", "5ff37dcbfc1a8bcc4c6c8d35e9d451da4e1a50f2")
+SHORTENER_WEBSITE = environ.get("SHORTENER_WEBSITE", 'modijiurl.com')
+SHORTENER_API2 = environ.get("SHORTENER_API2", "5ff37dcbfc1a8bcc4c6c8d35e9d451da4e1a50f2")
+SHORTENER_WEBSITE2 = environ.get("SHORTENER_WEBSITE2", 'modijiurl.com')
+SHORTENER_API3 = environ.get("SHORTENER_API3", "5ff37dcbfc1a8bcc4c6c8d35e9d451da4e1a50f2")
+SHORTENER_WEBSITE3 = environ.get("SHORTENER_WEBSITE3", 'modijiurl.com')
+TWO_VERIFY_GAP = int(environ.get('TWO_VERIFY_GAP', "86400"))
+THREE_VERIFY_GAP = int(environ.get('THREE_VERIFY_GAP', "604800"))
 #---------------------------------------------------------------
 #---------------------------------------------------------------
 LANGUAGES = ["hindi", "english", "telugu", "tamil", "kannada", "malayalam", "bengali", "marathi", "gujarati", "punjabi"]
@@ -97,7 +97,7 @@ LINK_MODE = is_enabled('LINK_MODE', True)
 #---------------------------------------------------------------
 #---------------------------------------------------------------
 #---------------------------------------------------------------
-STREAM_MODE = bool(environ.get('STREAM_MODE', False)) # Set True or Flase
+STREAM_MODE = bool(environ.get('STREAM_MODE', True)) # Set True or Flase
 # Online Stream and Download
 
 MULTI_CLIENT = False
