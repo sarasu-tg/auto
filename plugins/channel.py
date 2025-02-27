@@ -1,7 +1,4 @@
-# Credit - JISSHU BOTS
-# Modified By NBBotz
-# Some Codes Are Taken From A GitHub Repository And We Forgot His Name
-# Base Code Bishal
+
 
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -62,7 +59,7 @@ async def send_movie_updates(bot, file_name, caption, file_id):
                 season = season.group(1) if season else None       
                 file_name = file_name[:file_name.find(season) + 1]
         qualities = ["ORG", "org", "hdcam", "HDCAM", "HQ", "hq", "HDRip", "hdrip", 
-                     "camrip", "WEB-DL" "CAMRip", "hdtc", "predvd", "DVDscr", "dvdscr", 
+                     "camrip", "WEB-DL", "CAMRip", "hdtc", "predvd", "DVDscr", "dvdscr", 
                      "dvdrip", "dvdscr", "HDTC", "dvdscreen", "HDTS", "hdts"]
         quality = await check_qualities(caption, qualities) or "HDRip"
         language = ""
@@ -76,20 +73,28 @@ async def send_movie_updates(bot, file_name, caption, file_id):
             return 
         processed_movies.add(movie_name)    
         poster_url = await get_imdb(movie_name)
-        caption_message = f"#New_File_Added ✅\n\n🎬Tɪᴛʟᴇ:- {movie_name}\n\n🔊 Aᴜᴅɪᴏ:- {language}\n\n💿 Qᴜᴀʟɪᴛʏ:- {quality}\n\n📤 Uᴘʟᴏᴀᴅ : @mntgx " 
+        caption_message = f"✅<code> {movie_name} </code> \n🔊 {language}\n💿 {quality}\n\n📤 Uᴘʟᴏᴀᴅ : @mntgx \n\nCopy This Movie/Series Name And Ask In My Bots/Groups " 
         search_movie = movie_name.replace(" ", '-')
         movie_update_channel = await db.movies_update_channel_id()    
-        btn = [[
-            InlineKeyboardButton('📂 Cʟɪᴄᴋ Hᴇʀᴇ Tᴏ Sᴇᴀʀᴄʜ 📂', url=f'https://telegram.me/{temp.U_NAME}?start=getfile-{search_movie}')
-        ]]
+
+        # Buttons
+        btn = [
+            [
+                InlineKeyboardButton("🔰 Movies Search Group", url="https://t.me/mn_movies_group2")
+            ],
+            [
+                InlineKeyboardButton("🔍 Movies Search Bot", url="https://t.me/movies_mnbot") 
+            ]
+        ]
         reply_markup = InlineKeyboardMarkup(btn)
+
         if poster_url:
             await bot.send_message(movie_update_channel if movie_update_channel else MOVIE_UPDATE_CHANNEL, 
-                                 text=caption_message, reply_markup=reply_markup)
+                                   text=caption_message, reply_markup=reply_markup)
         else:
             no_poster = "https://telegra.ph/file/88d845b4f8a024a71465d.jpg"
             await bot.send_message(movie_update_channel if movie_update_channel else MOVIE_UPDATE_CHANNEL, 
-                                 text=caption_message, reply_markup=reply_markup)  
+                                   text=caption_message, reply_markup=reply_markup)  
     except Exception as e:
         print('Failed to send movie update. Error - ', e)
         await bot.send_message(LOG_CHANNEL, f'Failed to send movie update. Error - {e}')
