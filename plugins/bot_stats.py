@@ -1,6 +1,6 @@
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from pyrogram.errors.exceptions.bad_request_400 import MessageTooLong
+from pyrogram.errors import MessageTooLong
 from info import ADMINS, LOG_CHANNEL, USERNAME
 from database.users_chats_db import db
 from database.ia_filterdb import Media, get_files_db_size
@@ -9,6 +9,7 @@ from Script import script
 from datetime import datetime
 import psutil
 import time
+import os
 
 @Client.on_message(filters.new_chat_members & filters.group)
 async def save_group(bot, message):
@@ -61,27 +62,50 @@ async def leave_a_chat(bot, message):
     except Exception as e:
         await message.reply(f'<b>🚫 ᴇʀʀᴏʀ - `{e}`</b>')
 
-@Client.on_message(filters.command('groups') & filters.user(ADMINS))
-async def groups_list(bot, message):
-    msg = await message.reply('<b>Searching...</b>')
+@Client.on_message(filters.command('leaveall') & filters.user(ADMINS))
+async def leave_all_chats(bot, message):
+    msg = await message.reply('<b>Checking all groups...</b>')
+    
     chats = await db.get_all_chats()
-    out = "Groups saved in the database:\n\n"
+    left_count = 0
+    out = "Groups the bot has left:\n\n"
     count = 1
+
     async for chat in chats:
         chat_info = await bot.get_chat(chat['id'])
-        members_count = chat_info.members_count if chat_info.members_count else "Unknown"
-        out += f"<b>{count}. Title - `{chat['title']}`\nID - `{chat['id']}`\nMembers - `{members_count}`</b>"
-        out += '\n\n'
-        count += 1
-    try:
-        if count > 1:
+        members_count = chat_info.members_count if chat_info.members_count is not None else 0
+        admins = await bot.get_chat_administrators(chat['id'])
+        
+        bot_added_by_admin = any(admin.user.is_self for admin in admins)
+
+        # Leave if bot was NOT added by an admin AND members are less than 300
+        if not bot_added_by_admin and members_count < 300:
+            try:
+                # Send exit message before leaving
+                await bot.send_message(
+                    chat['id'], 
+                    "I'm leaving this group as per my owner’s instructions.\n"
+                    "If you want me to stay, contact @mnbots_support."
+                )
+            except Exception as e:
+                print(f"Failed to send message in {chat['title']}: {e}")
+
+            await bot.leave_chat(chat['id'])
+            out += f"<b>{count}. Title - {chat['title']}\nID - {chat['id']}\nMembers - {members_count}</b>\n\n"
+            count += 1
+            left_count += 1
+
+    if left_count > 0:
+        try:
             await msg.edit_text(out)
-        else:
-            await msg.edit_text("<b>No groups found</b>")
-    except MessageTooLong:
-        with open('chats.txt', 'w+') as outfile:
-            outfile.write(out)
-        await message.reply_document('chats.txt', caption="<b>List of all groups</b>")
+        except MessageTooLong:
+            file_path = 'left_chats.txt'
+            with open(file_path, 'w+', encoding='utf-8') as outfile:
+                outfile.write(out)
+            await message.reply_document(file_path, caption="<b>List of groups the bot left</b>")
+            os.remove(file_path)
+    else:
+        await msg.edit_text("<b>No groups met the leave criteria</b>")
 
 @Client.on_message(filters.command('stats') & filters.user(ADMINS) & filters.incoming)
 async def get_ststs(bot, message):
